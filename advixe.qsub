@@ -1,0 +1,22 @@
+#PBS -l nodes=1:gpu:ppn=2
+#PBS -o /tmp/$PBS_JOBID.out
+#PBS -e /tmp/$PBS_JOBID.err
+cd /home/u42497/nbody-demo/ver5_all
+BIN=./nbody.x
+BIN_NAME=`basename ${BIN}`
+TIME=`date +%m%d_%H%M`
+RES=advixe_${BIN_NAME}_${TIME}
+cp $BIN $RES
+cd $RES
+export SYCL_BE=PI_OPENCL
+#export ZE_ENABLE_API_TRACING=1
+#export SYCL_BE=P_LEVEL0
+
+exec 1>stdout.txt
+exec 2>stderr.txt
+
+time advixe-cl -c survey --profile-gpu --project-dir ${RES} -- ${BIN}
+time advixe-cl -c tripcounts -flop --profile-gpu --project-dir ${RES} -- ${BIN}
+time advixe-cl -c dependencies --profile-gpu --project-dir ${RES} -- ${BIN}
+time advixe-cl -c map --profile-gpu --project-dir ${RES} -- ${BIN}
+
