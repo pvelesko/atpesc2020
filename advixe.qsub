@@ -6,6 +6,7 @@ BIN=./nbody.x
 BIN_NAME=`basename ${BIN}`
 TIME=`date +%m%d_%H%M`
 RES=advixe_${BIN_NAME}_${TIME}
+mkdir $RES
 cp $BIN $RES
 cd $RES
 export SYCL_BE=PI_OPENCL
