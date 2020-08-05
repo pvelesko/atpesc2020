@@ -22,4 +22,6 @@ time vtune -c gpu-hotspots -knob profiling-mode=characterization -knob character
 time vtune -c gpu-hotspots -knob profiling-mode=source-analysis -knob source-analysis=bb-latency -r src_bb_lat -- ${BIN}
 time vtune -c gpu-hotspots -knob profiling-mode=source-analysis -knob source-analysis=mem-latency -r src_mem_lat -- ${BIN}
 time vtune -c gpu-offload -r gpu_offload -knob enable-stack-collection=true  -- ${BIN}
+time vtune -c uarch-exploration -r uarch_expl -- ${BIN}
+time vtune -c hpc-performance -r hpc_perf -- ${BIN}
 

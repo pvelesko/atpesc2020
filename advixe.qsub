@@ -16,8 +16,8 @@ export SYCL_BE=PI_OPENCL
 exec 1>stdout.txt
 exec 2>stderr.txt
 
-time advixe-cl -c survey --profile-gpu --project-dir ${RES} -- ${BIN}
-time advixe-cl -c tripcounts -flop --profile-gpu --project-dir ${RES} -- ${BIN}
-time advixe-cl -c dependencies --profile-gpu --project-dir ${RES} -- ${BIN}
-time advixe-cl -c map --profile-gpu --project-dir ${RES} -- ${BIN}
+time advixe-cl -c survey --profile-gpu -- ${BIN}
+time advixe-cl -c tripcounts -flop --profile-gpu -- ${BIN}
+time advixe-cl -c dependencies --profile-gpu -- ${BIN}
+time advixe-cl -c map --profile-gpu -- ${BIN}
 
